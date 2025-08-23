@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Nani Fintech Plus Theme - Modern Islamic Fintech
+   * Tailwind CSS theme with brand colors and dark mode optimized for financial technology
+   */
+  :root {
+    /* Nani Fintech Plus Brand Colors */
+    --brand-primary: 245 101% 59%; /* Modern blue */
+    --brand-secondary: 262 83% 58%; /* Purple accent */
+    --brand-accent: 217 91% 60%; /* Light blue */
+    --brand-gradient: linear-gradient(135deg, hsl(245, 101%, 59%) 0%, hsl(262, 83%, 58%) 50%, hsl(217, 91%, 60%) 100%);
+    
+    /* Fintech Specific Colors */
+    --fintech-blue: 217 91% 60%;
+    --fintech-purple: 262 83% 58%;
+    --fintech-indigo: 245 101% 59%;
+    --fintech-gold: 45 96% 53%;
+    
+    /* Dark theme base (Nani Fintech uses dark by default) */
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 84% 5%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 84% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 245 101% 59%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 18%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 245 101% 59%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar colors for dashboard (when needed) */
+    --sidebar-background: 222 84% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 245 101% 59%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 217 33% 18%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 18%;
+    --sidebar-ring: 245 101% 59%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-outfit;
+    background: radial-gradient(ellipse at top, hsl(222, 84%, 8%) 0%, hsl(222, 84%, 5%) 50%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(217, 33%, 18%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(245, 101%, 59%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(245, 101%, 69%);
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Glass morphism utility */
+  .glass {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Floating animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Pulse glow effect */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from {
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.6), 0 0 40px rgba(139, 92, 246, 0.3);
+    }
+  }
+
+  /* Data flow animation for tech background */
+  .data-flow {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+      rgba(99, 102, 241, 0), 
+      rgba(99, 102, 241, 0.5), 
+      rgba(99, 102, 241, 0)
+    );
+    animation: dataFlow 3s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes dataFlow {
+    0% { transform: translateY(-100%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  /* Islamic geometric pattern utility */
+  .islamic-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%236366F1' fill-opacity='0.1' d='M50 0L90 25L90 75L50 100L10 75L10 25z'/%3E%3C/svg%3E");
+    background-size: 50px 50px;
+  }
+
+  /* Futuristic button styles */
+  .btn-futuristic {
+    position: relative;
+    overflow: hidden;
+    background: var(--brand-gradient);
+    transition: all 0.3s ease;
+  }
+
+  .btn-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  .btn-futuristic:hover::before {
+    left: 100%;
+  }
+
+  .btn-futuristic:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+  }
+
+  /* Enhanced phone mockup animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes counterUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes progress {
+    0% { width: 0%; }
+    100% { width: 75%; }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-slideIn {
+    animation: slideIn 0.8s ease-out 0.2s both;
+  }
+
+  .animate-counterUp {
+    animation: counterUp 0.6s ease-out 0.4s both;
+  }
+
+  .animate-progress {
+    animation: progress 2s ease-out 1s both;
+  }
+
+  .animate-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  /* Waitlist section hover effects */
+  #waitlist:hover svg {
+    filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.7))
+           drop-shadow(0 0 30px rgba(236, 72, 153, 0.6)) !important;
+  }
+
+  @keyframes hexagonPulse {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+    50% { transform: scale(1.1) rotate(5deg); opacity: 0.8; }
+    100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+  }
+
+  #waitlist:hover .absolute svg {
+    animation: hexagonPulse 3s infinite ease-in-out;
+  }
+}
